@@ -1,0 +1,222 @@
+/* ==========================================================
+   Uber Christian — hoja de estilos
+   Rediseño visual. No se modifican clases/IDs usados por el JS.
+   ========================================================== */
+
+/* colours */
+:root{
+  --primary: #101623;      /* barra superior: azul-negro profundo */
+  --secondary: #1B2436;     /* borde / detalle de la barra */
+  --title: #FF5A36;         /* acento vivo: coral-naranja */
+  --title-dark: #E1441F;
+  --accent-soft: #FFE7DE;   /* fondo suave para detalles */
+  --surface: #FFFFFF;
+  --page-bg: #F4F5F8;
+  --text-main: #1F2430;
+  --text-muted: #6B7280;
+}
+
+* {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body{
+  background: var(--page-bg) !important;
+  color: var(--text-main);
+}
+
+/* layout styles */
+nav{
+  background: var(--primary) !important;
+  border-bottom: 4px solid var(--title);
+  box-shadow: 0 2px 10px rgba(16,22,35,0.25);
+}
+nav a{
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #FFFFFF !important;
+  font-weight: 600;
+}
+nav a span{
+  font-weight: bold;
+  color: var(--title) !important;
+}
+nav .sidenav-trigger{
+  margin: 0;
+  color: #FFFFFF !important;
+}
+
+/* side menu */
+.side-menu{
+  background: var(--surface);
+}
+.side-menu li > a.subheader{
+  color: var(--title-dark);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.side-menu li > a:not(.subheader){
+  color: var(--text-main);
+  font-weight: 500;
+}
+.side-menu li > a:not(.subheader):hover{
+  background-color: var(--accent-soft);
+  color: var(--title-dark);
+}
+
+/* recipe styles */
+.recipes{
+  margin-top: 28px;
+}
+.card-panel.recipe{
+  border-radius: 14px;
+  padding: 14px;
+  background: var(--surface);
+  box-shadow: 0px 4px 14px rgba(16,22,35,0.08);
+  border: 1px solid #ECEDF2;
+  display: grid;
+  grid-template-columns: 2fr 6fr 1fr;
+  grid-template-areas: "image details delete";
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.card-panel.recipe:hover{
+  transform: translateY(-2px);
+  box-shadow: 0px 8px 20px rgba(16,22,35,0.14);
+}
+.recipe img{
+  grid-area: image;
+  max-width: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.recipe-details{
+  grid-area: details;
+  margin-top: 6px;
+}
+.recipe-delete{
+  grid-area: delete;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}
+.recipe-delete i{
+  font-size: 18px;
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+.recipe-delete i:hover{
+  color: var(--title-dark);
+  cursor: pointer;
+}
+.recipe-title{
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 1.05em;
+}
+.recipe-ingredients{
+  font-size: 0.82em;
+  color: var(--text-muted);
+}
+.recipe-price{
+  font-weight: 700;
+  color: var(--title-dark);
+  margin-top: 2px;
+}
+
+/* form-styles */
+.add-btn{
+  background: var(--title) !important;
+  box-shadow: 0 6px 16px rgba(255,90,54,0.4) !important;
+}
+.add-btn:hover{
+  background: var(--title-dark) !important;
+}
+input{
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+input:focus:not([readonly]),
+textarea:focus:not([readonly]){
+  border-bottom: 1px solid var(--title) !important;
+  box-shadow: 0 1px 0 0 var(--title) !important;
+}
+input:focus:not([readonly]) + label,
+textarea:focus:not([readonly]) + label{
+  color: var(--title) !important;
+}
+.side-form{
+  background: var(--surface);
+}
+.side-form h6{
+  color: var(--title-dark);
+  font-weight: 700;
+}
+.side-form button{
+  background: var(--title);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(255,90,54,0.35);
+  border-radius: 6px;
+}
+.side-form button:hover{
+  background: var(--title-dark);
+}
+form .input-field{
+  margin-top: 30px;
+}
+
+/* generic buttons used across pages (pedidos, camera) */
+button{
+  border-radius: 6px;
+}
+#btnGuardar, #btnUbicacion, #btnCamara, #btnCapturar{
+  background: var(--title);
+  color: #fff;
+  border: none;
+}
+#btnGuardar:hover, #btnUbicacion:hover, #btnCamara:hover, #btnCapturar:hover{
+  background: var(--title-dark);
+}
+#btnCancelar, #btnLimpiar{
+  background: var(--surface);
+  color: var(--text-main);
+  border: 1px solid #D9DCE3;
+}
+#btnCancelar:hover, #btnLimpiar:hover{
+  background: #F0F1F5;
+}
+
+#foto {
+  max-width: 100%;   /* que nunca se desborde del contenedor */
+  height: auto;      /* mantiene proporción */
+  display: block;
+  margin: 0 auto;    /* centrado */
+  border-radius: 10px;
+}
+
+.side-form #foto {
+  width: 120px;      /* ajusta al ancho que quieras en la barra lateral */
+  height: auto;
+}
+
+.logo-about {
+  max-width: 150px;   /* tamaño máximo del logo */
+  height: auto;       /* mantiene proporción */
+  margin: 20px auto;  /* centrado con espacio */
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(16,22,35,0.15);
+}
+
+/* pedidos map + qr containers get a matching card look */
+#map{
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 14px rgba(16,22,35,0.10);
+  margin: 16px 0;
+}
+#qr{
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+}
